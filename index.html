@@ -3,58 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stacking Effect</title>
-    <!-- Import Roboto font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Basic styling for the container */
         body {
-            font-family: 'Roboto', sans-serif; /* Use Roboto font */
-        }
-        .container {
+            font-family: 'Verdana', sans-serif; /* Using Verdana font */
+            font-size: 24px;
+            line-height: 0.8;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
-            font-size: 24px;
-            line-height: 0.8; /* Reduced spacing between lines */
+            background-color: transparent;
+        }
+
+        .container {
             text-align: center;
-            color: #000;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px; /* Adjusted to avoid overflow */
+            border: 2px solid #000;
+            box-sizing: border-box;
+            background-color: transparent; /* Removed background */
         }
-        .word {
-            opacity: 0; /* Start hidden */
-            transition: opacity 1s ease-in-out; /* Smooth fade-in */
+
+        .line {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        .word.visible {
-            opacity: 1; /* Make visible */
+
+        .line.show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
+    <script>
+        window.onload = function() {
+            let lines = document.querySelectorAll('.line');
+            let delay = 500; // Delay for each line
+
+            for (let i = 0; i < lines.length; i++) {
+                setTimeout(function() {
+                    lines[i].classList.add('show');
+                }, delay * i);
+            }
+        };
+    </script>
+    <title>Word Reveal Effect</title>
 </head>
 <body>
     <div class="container">
-        <div id="word-box">
-            <div class="word" style="color: #5e4848;">Development</div>
-            <div class="word" style="color: #d1c7da;">Architecture</div>
-            <div class="word" style="color: #968b7d;">Interior Design</div>
-            <div class="word" style="color: #b4c4bc;">Construction</div>
-        </div>
+        <div class="line">Development</div>
+        <div class="line">Development<br>Architecture</div>
+        <div class="line">Development<br>Architecture<br>Interior Design</div>
+        <div class="line">Development<br>Architecture<br>Interior Design<br>Construction</div>
     </div>
-
-    <script>
-        const words = document.querySelectorAll(".word");
-        let index = 0;
-
-        function showWords() {
-            if (index < words.length) {
-                words[index].classList.add("visible");
-                index++;
-                setTimeout(showWords, 2000); // Show each word every 2 seconds
-            }
-        }
-
-        // Start the animation
-        setTimeout(showWords, 2000); // Delay before the first word appears
-    </script>
 </body>
 </html>
