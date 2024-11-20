@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacking Effect</title>
+    <!-- Import Roboto font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for the container */
+        body {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-size: 24px;
+            line-height: 0.8; /* Reduced spacing between lines */
+            text-align: center;
+            color: #000;
+        }
+        .word {
+            opacity: 0; /* Start hidden */
+            transition: opacity 1s ease-in-out; /* Smooth fade-in */
+        }
+        .word.visible {
+            opacity: 1; /* Make visible */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="word-box">
+            <div class="word" style="color: #5e4848;">Development</div>
+            <div class="word" style="color: #d1c7da;">Architecture</div>
+            <div class="word" style="color: #968b7d;">Interior Design</div>
+            <div class="word" style="color: #b4c4bc;">Construction</div>
+        </div>
+    </div>
+
+    <script>
+        const words = document.querySelectorAll(".word");
+        let index = 0;
+
+        function showWords() {
+            if (index < words.length) {
+                words[index].classList.add("visible");
+                index++;
+                setTimeout(showWords, 2000); // Show each word every 2 seconds
+            }
+        }
+
+        // Start the animation
+        setTimeout(showWords, 2000); // Delay before the first word appears
+    </script>
+</body>
+</html>
