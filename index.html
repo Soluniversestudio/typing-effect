@@ -1,66 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stacking Effect</title>
-    <!-- Use Segoe UI font -->
-    <style>
-        /* Basic styling for the container */
-        body {
-            font-family: 'Segoe UI', sans-serif; /* Use Segoe UI font */
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: transparent; /* Set transparent background */
-            font-size: 24px;
-            line-height: 1; /* Set line spacing to 1 */
-            text-align: center;
-            color: #000;
-            overflow: hidden; /* Prevent scrollbars */
-        }
-        #word-box {
-            display: inline-block;
-            text-align: left;
-        }
-        .word {
-            opacity: 0; /* Start hidden */
-            transition: opacity 1s ease-in-out; /* Smooth fade-in */
-        }
-        .word.visible {
-            opacity: 1; /* Make visible */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Animation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .animation-box {
+      width: 300px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #ccc;
+      position: relative;
+    }
+
+    .word {
+      font-size: 24px;
+      font-weight: 300;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    /* Color Styles for Words */
+    .word:nth-child(1) {
+      color: #5e4848;
+    }
+
+    .word:nth-child(2) {
+      color: #d1c7da;
+    }
+
+    .word:nth-child(3) {
+      color: #968b7d;
+    }
+
+    .word:nth-child(4) {
+      color: #b4c4bc;
+    }
+
+    /* Animation Timing */
+    @keyframes fadeIn {
+      0%, 10% { opacity: 0; }
+      15%, 35% { opacity: 1; }
+      40%, 100% { opacity: 0; }
+    }
+
+    .word:nth-child(1) { animation: fadeIn 8s infinite 0s; } /* First word starts immediately */
+    .word:nth-child(2) { animation: fadeIn 8s infinite 2s; } /* Second word starts after 2 seconds */
+    .word:nth-child(3) { animation: fadeIn 8s infinite 4s; } /* Third word starts after 4 seconds */
+    .word:nth-child(4) { animation: fadeIn 8s infinite 6s; } /* Fourth word starts after 6 seconds */
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div id="word-box">
-            <div class="word" style="color: #5e4848;">Development</div>
-            <div class="word" style="color: #d1c7da;">Architecture</div>
-            <div class="word" style="color: #968b7d;">Interior Design</div>
-            <div class="word" style="color: #b4c4bc;">Construction</div>
-        </div>
-    </div>
-
-    <script>
-        const words = document.querySelectorAll(".word");
-        let index = 0;
-
-        function showWords() {
-            if (index < words.length) {
-                words[index].classList.add("visible");
-                index++;
-                setTimeout(showWords, 2000); // Show each word every 2 seconds
-            }
-        }
-
-        // Start the animation
-        setTimeout(showWords, 2000); // Delay before the first word appears
-    </script>
+  <div class="animation-box">
+    <div class="word">Development</div>
+    <div class="word">Architecture</div>
+    <div class="word">Interior Design</div>
+    <div class="word">Construction</div>
+  </div>
 </body>
 </html>
+
