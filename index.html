@@ -49,7 +49,10 @@
 
     <script>
         const words = document.querySelectorAll(".word");
-        let index = 0;
+        let index = 1; // Start from the second word as the first will appear instantly
+
+        // Make the first word visible immediately
+        words[0].classList.add("visible");
 
         function showWords() {
             if (index < words.length) {
@@ -59,8 +62,8 @@
             }
         }
 
-        // Start the animation
-        setTimeout(showWords, 2000); // Delay before the first word appears
+        // Start the animation for subsequent words after 1 second
+        setTimeout(showWords, 1000);
     </script>
 </body>
 </html>
