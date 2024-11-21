@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,15 +53,15 @@
 
     /* Animation Timing */
     @keyframes fadeIn {
-      0%, 10% { opacity: 0; }
-      15%, 35% { opacity: 1; }
-      40%, 100% { opacity: 0; }
+      0%, 25% { opacity: 0; }
+      30%, 50% { opacity: 1; }
+      55%, 100% { opacity: 0; }
     }
 
-    .word:nth-child(1) { animation: fadeIn 8s infinite 0s; } /* First word starts immediately */
-    .word:nth-child(2) { animation: fadeIn 8s infinite 2s; } /* Second word starts after 2 seconds */
-    .word:nth-child(3) { animation: fadeIn 8s infinite 4s; } /* Third word starts after 4 seconds */
-    .word:nth-child(4) { animation: fadeIn 8s infinite 6s; } /* Fourth word starts after 6 seconds */
+    .word:nth-child(1) { animation: fadeIn 8s infinite; }
+    .word:nth-child(2) { animation: fadeIn 8s infinite 2s; }
+    .word:nth-child(3) { animation: fadeIn 8s infinite 4s; }
+    .word:nth-child(4) { animation: fadeIn 8s infinite 6s; }
   </style>
 </head>
 <body>
@@ -72,4 +73,3 @@
   </div>
 </body>
 </html>
-
